@@ -10,9 +10,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final data = DataProductBuah('Bayam', '2.000', 'ikat', 'assets/img1.png',
-      'Secara umum sayuran dan buah-buahan merupakan sumber berbagai vitamin, mineral');
-
   @override
   Widget build(BuildContext context) {
     return Container(

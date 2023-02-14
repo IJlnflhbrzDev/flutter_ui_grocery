@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_grocery_ui/data.dart';
 
 class ItemWidget extends StatelessWidget {
-  const ItemWidget({super.key, required this.products});
   final DataProductBuah products;
+  const ItemWidget({super.key, required this.products});
   @override
   Widget build(BuildContext context) {
     return Card(
