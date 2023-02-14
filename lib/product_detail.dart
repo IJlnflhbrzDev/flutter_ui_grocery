@@ -16,6 +16,7 @@ class _ProductDetailState extends State<ProductDetail> {
   Widget build(BuildContext context) {
     var stockProduk = int.parse(widget.product.stock!);
 
+    // NOTED: function untuk menambah nilai variabel count product
     calculateCountPlus() async {
       if (count >= stockProduk) {
         await showDialog(
@@ -43,6 +44,7 @@ class _ProductDetailState extends State<ProductDetail> {
       }
     }
 
+    // NOTED: function untuk mengurangi nilai variabel count product
     calculateCountMinus() {
       setState(() {
         if (count <= 1) {
