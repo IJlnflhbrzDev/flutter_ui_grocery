@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_grocery_ui/data.dart';
 
-class ProductDetail extends StatelessWidget {
+class ProductDetail extends StatefulWidget {
   const ProductDetail({super.key, required this.product});
   final DataProductBuah product;
+
+  @override
+  State<ProductDetail> createState() => _ProductDetailState();
+}
+
+class _ProductDetailState extends State<ProductDetail> {
+  int qtyProduct = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +44,7 @@ class ProductDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            '${product.name}',
+            '${widget.product.name}',
             style: const TextStyle(
               fontSize: 50,
               fontWeight: FontWeight.w600,
@@ -44,12 +52,12 @@ class ProductDetail extends StatelessWidget {
           ),
           Center(
             child: Hero(
-              tag: '${product.image}',
+              tag: '${widget.product.image}',
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.45,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('${product.image}'),
+                      image: AssetImage('${widget.product.image}'),
                       fit: BoxFit.contain),
                 ),
               ),
@@ -61,7 +69,7 @@ class ProductDetail extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Rp. ${product.price}',
+                  'Rp. ${widget.product.price}',
                   style: const TextStyle(
                     color: Colors.green,
                     fontSize: 30,
@@ -69,7 +77,7 @@ class ProductDetail extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '/${product.quanty}',
+                  '/${widget.product.quanty}',
                   style: const TextStyle(
                     color: Colors.green,
                     fontSize: 20,
@@ -85,7 +93,7 @@ class ProductDetail extends StatelessWidget {
               color: Colors.grey[200],
               padding: const EdgeInsets.all(20),
               child: Text(
-                '${product.description}',
+                '${widget.product.description}',
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -108,22 +116,34 @@ class ProductDetail extends StatelessWidget {
                     child: Row(
                       children: [
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              if (qtyProduct <= 1) {
+                                qtyProduct = 1;
+                              } else {
+                                qtyProduct = qtyProduct - 1;
+                              }
+                            });
+                          },
                           icon: const Icon(
                             Icons.remove_circle_outline,
                             color: Colors.white,
                           ),
                         ),
-                        const Text(
-                          '1',
-                          style: TextStyle(
+                        Text(
+                          '$qtyProduct',
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 30,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              qtyProduct = qtyProduct + 1;
+                            });
+                          },
                           icon: const Icon(
                             Icons.add_circle_outline,
                             color: Colors.white,
