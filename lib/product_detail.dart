@@ -10,10 +10,49 @@ class ProductDetail extends StatefulWidget {
 }
 
 class _ProductDetailState extends State<ProductDetail> {
-  int qtyProduct = 1;
+  int count = 1;
 
   @override
   Widget build(BuildContext context) {
+    var stockProduk = int.parse(widget.product.stock!);
+
+    calculateCountPlus() async {
+      if (count >= stockProduk) {
+        await showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text('Upss.. Stock product hanya $stockProduk'),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text("OK"),
+                  ),
+                ],
+              );
+            });
+        setState(() {
+          count = stockProduk;
+        });
+      } else {
+        setState(() {
+          count = count + 1;
+        });
+      }
+    }
+
+    calculateCountMinus() {
+      setState(() {
+        if (count <= 1) {
+          count = 1;
+        } else {
+          count = count - 1;
+        }
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -117,13 +156,7 @@ class _ProductDetailState extends State<ProductDetail> {
                       children: [
                         IconButton(
                           onPressed: () {
-                            setState(() {
-                              if (qtyProduct <= 1) {
-                                qtyProduct = 1;
-                              } else {
-                                qtyProduct = qtyProduct - 1;
-                              }
-                            });
+                            calculateCountMinus();
                           },
                           icon: const Icon(
                             Icons.remove_circle_outline,
@@ -131,7 +164,7 @@ class _ProductDetailState extends State<ProductDetail> {
                           ),
                         ),
                         Text(
-                          '$qtyProduct',
+                          '$count',
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 30,
@@ -140,9 +173,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         ),
                         IconButton(
                           onPressed: () {
-                            setState(() {
-                              qtyProduct = qtyProduct + 1;
-                            });
+                            calculateCountPlus();
                           },
                           icon: const Icon(
                             Icons.add_circle_outline,
