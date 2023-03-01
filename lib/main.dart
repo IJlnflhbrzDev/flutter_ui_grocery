@@ -55,7 +55,9 @@ class MyApp extends StatelessWidget {
                         width: 20,
                         height: 20,
                         decoration: const BoxDecoration(
-                            color: Colors.red, shape: BoxShape.circle),
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                        ),
                         child: const Center(
                           child: Text(
                             "2",

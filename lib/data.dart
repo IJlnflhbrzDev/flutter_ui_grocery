@@ -1,7 +1,9 @@
 class DataProductBuah {
   final String? name, price, quanty, image, description, stock;
+  final int? id;
 
   DataProductBuah(
+    this.id,
     this.name,
     this.price,
     this.quanty,
@@ -13,6 +15,7 @@ class DataProductBuah {
 
 final List<DataProductBuah> alldata = [
   DataProductBuah(
+    1,
     'Bayam',
     '2.000',
     'ikat',
@@ -21,6 +24,7 @@ final List<DataProductBuah> alldata = [
     '10',
   ),
   DataProductBuah(
+    2,
     'Alpukat',
     '4.000',
     'ikat',
@@ -29,6 +33,7 @@ final List<DataProductBuah> alldata = [
     '10',
   ),
   DataProductBuah(
+    3,
     'Jagung',
     '9.500',
     'ikat',
@@ -37,6 +42,7 @@ final List<DataProductBuah> alldata = [
     '10',
   ),
   DataProductBuah(
+    4,
     'Kiwi',
     '4.500',
     'ikat',
@@ -45,6 +51,7 @@ final List<DataProductBuah> alldata = [
     '10',
   ),
   DataProductBuah(
+    5,
     'Jeruk',
     '3.500',
     'ikat',
@@ -53,6 +60,7 @@ final List<DataProductBuah> alldata = [
     '10',
   ),
   DataProductBuah(
+    6,
     'Apel',
     '4.500',
     'ikat',

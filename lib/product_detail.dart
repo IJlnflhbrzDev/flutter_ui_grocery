@@ -60,9 +60,9 @@ class _ProductDetailState extends State<ProductDetail> {
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 1,
-        title: const Text(
-          "Product Detail",
-          style: TextStyle(color: Colors.black),
+        title: Text(
+          "Product Detail ${widget.product.id}",
+          style: const TextStyle(color: Colors.black),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -146,69 +146,96 @@ class _ProductDetailState extends State<ProductDetail> {
             ),
           ),
           Container(
-              height: 100,
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              alignment: Alignment.bottomCenter,
-              color: Colors.grey,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Center(
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            calculateCountMinus();
-                          },
-                          icon: const Icon(
-                            Icons.remove_circle_outline,
-                            color: Colors.white,
-                          ),
+            height: 100,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            alignment: Alignment.bottomCenter,
+            color: Colors.grey,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Center(
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          calculateCountMinus();
+                        },
+                        icon: const Icon(
+                          Icons.remove_circle_outline,
+                          color: Colors.white,
                         ),
-                        Text(
-                          '$count',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w700,
-                          ),
+                      ),
+                      Text(
+                        '$count',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700,
                         ),
-                        IconButton(
-                          onPressed: () {
-                            calculateCountPlus();
-                          },
-                          icon: const Icon(
-                            Icons.add_circle_outline,
-                            color: Colors.white,
-                          ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          calculateCountPlus();
+                        },
+                        icon: const Icon(
+                          Icons.add_circle_outline,
+                          color: Colors.white,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Center(
-                    child: Container(
-                      width: 190,
-                      height: 60,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(25),
+                ),
+                Container(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 110,
+                        height: 60,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(25),
+                          ),
+                          color: Colors.blue,
                         ),
-                        color: Colors.green,
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Pesan',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
+                        child: const Center(
+                          child: Text(
+                            'Add to cart',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  )
-                ],
-              ))
+                      const SizedBox(width: 10),
+                      Container(
+                        width: 110,
+                        height: 60,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(25),
+                          ),
+                          color: Colors.green,
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'Pesan',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
